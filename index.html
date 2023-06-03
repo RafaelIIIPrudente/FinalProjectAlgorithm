@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- HTML head section -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+      /* CSS styling for the page */
+      body {
+        background-color: #18335d;
+        background-image: linear-gradient(45deg, #18335d, #e6c45a);
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin-top: 50px;
+        text-align: center;
+      }
+      h1 {
+        color: #fff;
+        margin-bottom: 30px;
+        font-size: 48px;
+      }
+      .form-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      select {
+        width: 250px;
+        height: 40px;
+        padding: 6px 12px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+      }
+      button {
+        margin-left: 10px;
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 4px;
+        background-color: #337ab7;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #286090;
+      }
+      #resultContainer {
+        text-align: center;
+        margin-top: 30px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 4px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+      }
+      #resultPath {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #333;
+      }
+      #resultWeight {
+        font-size: 16px;
+        color: #777;
+      }
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 40px;
+        }
+        select {
+          width: 200px;
+          height: 36px;
+        }
+        button {
+          font-size: 14px;
+          padding: 8px 16px;
+        }
+        #resultContainer {
+          padding: 10px;
+        }
+        #resultPath {
+          font-size: 16px;
+        }
+        #resultWeight {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Container to hold the page content -->
+      <h1>CPU Map Finder</h1>
+      <img src="pictures/map1.png" alt="CPU Map" />
+      <br />
+      <br />
+      <div class="form-container">
+        <!-- Container for the form elements -->
+        <select name="startPoint" id="StartPoint">
+          <!-- Dropdown for selecting the start point -->
+        </select>
+        <select name="endPoint" id="EndPoint">
+          <!-- Dropdown for selecting the end point -->
+        </select>
+        <button onclick="makePath()">Find Path</button>
+        <!-- Button to trigger the path finding process -->
+      </div>
+
+      <div id="resultContainer">
+        <!-- Container to display the result -->
+        <h3>Result:</h3>
+        <div id="resultPath"></div>
+        <div id="resultWeight"></div>
+        <!-- Elements to display the path and weight result -->
+      </div>
+    </div>
+
+    <script src="BFS.js"></script>
+    <script>
+      // JavaScript code section
+
+      // Populate the start and end point dropdowns with options
+      const startPointDropdown = document.getElementById("StartPoint");
+      const endPointDropdown = document.getElementById("EndPoint");
+
+      const locations =
+        // An array of location options
+        [
+          " ",
+          "Gate 4",
+          "CPU Birthing Center",
+          "Approtech",
+          "Senior High School Parking Lot",
+          "Mary Thomas Hall",
+          "Senior High School Building",
+          "Dr. Elwood Edge Building",
+          "Lopez Hall",
+          "Junior High School",
+          "High School Gym",
+          "High School Science Building",
+          "High School Canteen",
+          "Gate 3",
+          "Old Valentine Hall",
+          "Half Moon Field",
+          "New Valentine Hall",
+          "Student Enterprise/CPUR Office",
+          "Admin Building",
+          "Gate 2/ Main Gate",
+          "Gate 1",
+          "Registrar",
+          "Elementary",
+          "Excel",
+          "Dining Hall",
+          "EMC",
+          "CPU Flag Pole",
+          "Roblee Science Hall",
+          "Weston Hall",
+          "Loreto D. Tupaz Building",
+          "Henry Luce Library III",
+          "Rose Memorial Auditoriuml",
+          "University Church",
+          "Engineering Parking Lot",
+          "Engineering Building",
+          "Big Field",
+          "Franklin Hall",
+          "Packaging Engineering",
+          "Uy Parking Lot",
+          "Uy Building",
+          "Elementary Gym",
+          "Johnson Hall",
+          "Ancheta Hall",
+          "Ancheta Parking Lot",
+          "Elementary Field",
+          "CHM",
+          "Presidents House",
+          "Gate 6",
+          "American Houses",
+          "Praying Park",
+          "Butterfly Garden",
+          "Lifestyle Center",
+          "Swimming Pool",
+          "Softball Field",
+          "Tennis Court",
+          "Gate 8",
+          "Gate 7",
+          "Fine Arts Building",
+          "University Gym",
+          "Anatomy Building",
+          "Kindergarten",
+          "Alumni Promenade and Concert Park",
+          "Power House",
+          "Prayer Garden",
+          "Roselund",
+        ];
+
+      // Iterate through the locations array and add options to both dropdowns
+      locations.forEach((location) => {
+        const option = document.createElement("option");
+        option.text = location;
+        startPointDropdown.add(option.cloneNode(true));
+        endPointDropdown.add(option);
+      });
+    </script>
+  </body>
+</html>
